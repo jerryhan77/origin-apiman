@@ -7,7 +7,8 @@ USER 0
 ENV HOME=/opt/origin/builder
 WORKDIR ${HOME}
 
-RUN yum install -y --setopt=tsflags=nodocs \
+RUN yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    yum install -y --setopt=tsflags=nodocs \
                 java-1.8.0-openjdk java-1.8.0-openjdk-devel docker jq && \
     yum clean all
 ADD install.sh ${HOME}/
