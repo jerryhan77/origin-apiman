@@ -14,5 +14,7 @@ RUN yum install -y --setopt=tsflags=nodocs \
 ADD install.sh ${HOME}/
 RUN ${HOME}/install.sh
 
+ADD settings.xml ${HOME}/
+
 ADD build.sh ${HOME}/
 CMD ["bash", "build.sh"]

@@ -50,9 +50,9 @@ if [ -n "${OUTPUT_IMAGE:-}" ] ; then
   tag="${OUTPUT_REGISTRY}/${OUTPUT_IMAGE}"
   [ -d "${PUSH_DOCKERCFG_PATH:-}" ] && [ ! -e "$HOME/.dockercfg" ] && \
     cp "$PUSH_DOCKERCFG_PATH/.dockercfg" "$HOME/.dockercfg"
-  mvn -Pf8-build -Pssl -Ddocker.image="${tag}" && docker push "$tag"
+  mvn -s $HOME/settings.xml -Pf8-build -Pssl -Ddocker.image="${tag}" && docker push "$tag"
 else
-  mvn -Pf8-build -Pssl
+  mvn -s $HOME/settings.xml -Pf8-build -Pssl
 fi
 
 popd
