@@ -97,7 +97,6 @@ function os::int::deploy::write_kubeconfig() {
     local master_url=${MASTER_URL:-https://kubernetes.default.svc.cluster.local:443}
     local master_ca=${MASTER_CA:-/var/run/secrets/kubernetes.io/serviceaccount/ca.crt}
     oc config set-cluster master \
-        --api-version='v1' \
         --certificate-authority="${master_ca}" \
         --server="${master_url}"
     oc config set-credentials account \

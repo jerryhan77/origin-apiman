@@ -96,7 +96,7 @@ items:
   -
     description: 'Specify prefix for apiman components; e.g. for "openshift/origin-apiman-deployer:v1.1", set prefix "openshift/origin-"'
     name: IMAGE_PREFIX
-    value: "docker.io/openshift/origin-"
+    value: "172.30.243.192:5000/gateway-dev/"
   -
     description: 'Specify version for apiman components; e.g. for "openshift/origin-apiman-deployer:v1.1", set version "v1.1"'
     name: IMAGE_VERSION
