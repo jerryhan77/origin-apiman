@@ -1,4 +1,4 @@
-FROM openshift/origin:v1.5.1
+FROM openshift/origin:latest
 
 MAINTAINER OpenShift Development <dev@lists.openshift.redhat.com>
 
