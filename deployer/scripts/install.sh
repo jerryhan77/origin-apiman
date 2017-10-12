@@ -158,6 +158,11 @@ function create_config() {
 function create_templates() {
   echo "Creating templates"
   local image_params="IMAGE_VERSION_DEFAULT=${image_version},IMAGE_PREFIX_DEFAULT=${image_prefix}"
+  echo "Debug Start"
+  sed "/serviceAccountName/ i\
+\          $(os::int::deploy::extract_nodeselector ${input_vars[storage-nodeselector]:-})" \
+           templates/es.yaml
+  echo "Debug End"
   sed "/serviceAccountName/ i\
 \          $(os::int::deploy::extract_nodeselector ${input_vars[storage-nodeselector]:-})" \
            templates/es.yaml | oc process -f -  \
