@@ -158,21 +158,7 @@ function create_config() {
 function create_templates() {
   echo "Creating templates"
   local image_params="IMAGE_VERSION_DEFAULT=${image_version},IMAGE_PREFIX_DEFAULT=${image_prefix}"
-  echo "Debug Start"
-  sed "/serviceAccountName/ i\
-\          $(os::int::deploy::extract_nodeselector ${input_vars[storage-nodeselector]:-})" \
-           templates/es.yaml | oc process -f - \
-           --param "ES_INSTANCE_RAM=${es_instance_ram}" \
-           --param "ES_NODE_QUORUM=${es_node_quorum}" \
-           --param "ES_RECOVER_AFTER_NODES=${es_recover_after_nodes}" \
-           --param "ES_RECOVER_EXPECTED_NODES=${es_recover_expected_nodes}" \
-           --param "ES_RECOVER_AFTER_TIME=${es_recover_after_time}" \
-           --param "IMAGE_VERSION_DEFAULT=${image_version}" \
-           --param "IMAGE_PREFIX_DEFAULT=${image_prefix}"
-  echo "Debug End"
-  sed "/serviceAccountName/ i\
-\          $(os::int::deploy::extract_nodeselector ${input_vars[storage-nodeselector]:-})" \
-           templates/es.yaml | oc process -f -  \
+  oc process -f templates/es.yaml \
            --param "ES_INSTANCE_RAM=${es_instance_ram}" \
            --param "ES_NODE_QUORUM=${es_node_quorum}" \
            --param "ES_RECOVER_AFTER_NODES=${es_recover_after_nodes}" \
@@ -182,27 +168,21 @@ function create_templates() {
            --param "IMAGE_PREFIX_DEFAULT=${image_prefix}" \
            | oc create -f -
 
-  sed "/serviceAccountName/ i\
-\          $(os::int::deploy::extract_nodeselector ${input_vars[curator-nodeselector]:-})" \
-           templates/curator.yaml | oc process -f - \
+  oc process -f templates/curator.yaml \
            --param "ES_HOST=apiman-storage" \
            --param "MASTER_URL=${master_url}" \
            --param "IMAGE_VERSION_DEFAULT=${image_version}" \
            --param "IMAGE_PREFIX_DEFAULT=${image_prefix}" \
            | oc create -f -
 
-  sed "/serviceAccountName/ i\
-\          $(os::int::deploy::extract_nodeselector ${input_vars[console-nodeselector]:-})" \
-           templates/console.yaml | oc process -f - \
+  oc process -f templates/console.yaml \
            --param "PUBLIC_MASTER_URL=${public_master_url}" \
            --param "GATEWAY_PUBLIC_HOSTNAME=${gateway_hostname}" \
            --param "IMAGE_VERSION_DEFAULT=${image_version}" \
            --param "IMAGE_PREFIX_DEFAULT=${image_prefix}" \
            | oc create -f -
 
-  sed "/serviceAccountName/ i\
-\          $(os::int::deploy::extract_nodeselector ${input_vars[gateway-nodeselector]:-})" \
-           templates/gateway.yaml | oc process -f - \
+  oc process -f templates/gateway.yaml \
            --param "ES_HOST=apiman-storage" \
            --param "IMAGE_VERSION_DEFAULT=${image_version}" \
            --param "IMAGE_PREFIX_DEFAULT=${image_prefix}" \
