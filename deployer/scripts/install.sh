@@ -185,9 +185,9 @@ function create_templates() {
 #           --param "IMAGE_VERSION_DEFAULT=${image_version}" \
 #           --param "IMAGE_PREFIX_DEFAULT=${image_prefix}"
 
-  oc new-app -f templates/support.yaml \
-           --param "CONSOLE_HOSTNAME=${console_hostname}" \
-           --param "IMAGE_PREFIX_DEFAULT=${image_prefix}"
+#  oc new-app -f templates/support.yaml \
+#           --param "CONSOLE_HOSTNAME=${console_hostname}" \
+#           --param "IMAGE_PREFIX_DEFAULT=${image_prefix}"
 }
 
 ######################################
