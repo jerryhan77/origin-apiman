@@ -159,14 +159,14 @@ function create_templates() {
   echo "Creating templates"
   local image_params="IMAGE_VERSION_DEFAULT=${image_version},IMAGE_PREFIX_DEFAULT=${image_prefix}"
 
-  oc new-app -f templates/es.yaml \
-           --param "ES_INSTANCE_RAM=${es_instance_ram}" \
-           --param "ES_NODE_QUORUM=${es_node_quorum}" \
-           --param "ES_RECOVER_AFTER_NODES=${es_recover_after_nodes}" \
-           --param "ES_RECOVER_EXPECTED_NODES=${es_recover_expected_nodes}" \
-           --param "ES_RECOVER_AFTER_TIME=${es_recover_after_time}" \
-           --param "IMAGE_VERSION_DEFAULT=${image_version}" \
-           --param "IMAGE_PREFIX_DEFAULT=${image_prefix}"
+#  oc new-app -f templates/es.yaml \
+#           --param "ES_INSTANCE_RAM=${es_instance_ram}" \
+#           --param "ES_NODE_QUORUM=${es_node_quorum}" \
+#           --param "ES_RECOVER_AFTER_NODES=${es_recover_after_nodes}" \
+#           --param "ES_RECOVER_EXPECTED_NODES=${es_recover_expected_nodes}" \
+#           --param "ES_RECOVER_AFTER_TIME=${es_recover_after_time}" \
+#           --param "IMAGE_VERSION_DEFAULT=${image_version}" \
+#           --param "IMAGE_PREFIX_DEFAULT=${image_prefix}"
 
   oc new-app -f templates/curator.yaml \
            --param "ES_HOST=apiman-storage" \
