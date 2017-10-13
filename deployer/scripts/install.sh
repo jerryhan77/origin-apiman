@@ -168,11 +168,11 @@ function create_templates() {
 #           --param "IMAGE_VERSION_DEFAULT=${image_version}" \
 #           --param "IMAGE_PREFIX_DEFAULT=${image_prefix}"
 
-  oc new-app -f templates/curator.yaml \
-           --param "ES_HOST=apiman-storage" \
-           --param "MASTER_URL=${master_url}" \
-           --param "IMAGE_VERSION_DEFAULT=${image_version}" \
-           --param "IMAGE_PREFIX_DEFAULT=${image_prefix}"
+#  oc new-app -f templates/curator.yaml \
+#           --param "ES_HOST=apiman-storage" \
+#           --param "MASTER_URL=${master_url}" \
+#           --param "IMAGE_VERSION_DEFAULT=${image_version}" \
+#           --param "IMAGE_PREFIX_DEFAULT=${image_prefix}"
 
   oc new-app -f templates/console.yaml \
            --param "PUBLIC_MASTER_URL=${public_master_url}" \
