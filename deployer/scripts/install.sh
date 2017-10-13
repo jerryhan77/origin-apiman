@@ -174,11 +174,11 @@ function create_templates() {
 #           --param "IMAGE_VERSION_DEFAULT=${image_version}" \
 #           --param "IMAGE_PREFIX_DEFAULT=${image_prefix}"
 
-  oc new-app -f templates/console.yaml \
-           --param "PUBLIC_MASTER_URL=${public_master_url}" \
-           --param "GATEWAY_PUBLIC_HOSTNAME=${gateway_hostname}" \
-           --param "IMAGE_VERSION_DEFAULT=${image_version}" \
-           --param "IMAGE_PREFIX_DEFAULT=${image_prefix}"
+#  oc new-app -f templates/console.yaml \
+#           --param "PUBLIC_MASTER_URL=${public_master_url}" \
+#           --param "GATEWAY_PUBLIC_HOSTNAME=${gateway_hostname}" \
+#           --param "IMAGE_VERSION_DEFAULT=${image_version}" \
+#           --param "IMAGE_PREFIX_DEFAULT=${image_prefix}"
 
   oc new-app -f templates/gateway.yaml \
            --param "ES_HOST=apiman-storage" \
